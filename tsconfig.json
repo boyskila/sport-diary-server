@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "rootDir": "src",
+        "outDir": "dist",
+        "lib": ["ES2016"],
+        "module": "CommonJS",
+        "strict": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "noImplicitAny": true
+    },
+    "include": ["./src/**/*"]
+}
