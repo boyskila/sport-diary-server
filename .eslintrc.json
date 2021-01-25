@@ -18,6 +18,7 @@
     ],
 
     "rules": {
-        "arrow-body-style": ["error", "always"] // return function value explicitly with return keyword
+        "arrow-body-style": ["error", "always"], // return function value explicitly with return keyword
+        "no-use-before-define": "off"
     }
 }
