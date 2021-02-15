@@ -4,9 +4,10 @@
         "es2021": true
     },
     "extends": [
-        "eslint:recommended",
+        "eslint:recommended", 
         "plugin:@typescript-eslint/recommended",
-        "standard"
+        "plugin:react/recommended",
+        "plugin:prettier/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -14,11 +15,22 @@
         "sourceType": "module"
     },
     "plugins": [
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "react"
     ],
+    "settings": {
+        "react": {
+            "version": "detected"
+        }
+    },
 
     "rules": {
         "arrow-body-style": ["error", "always"], // return function value explicitly with return keyword
-        "no-use-before-define": "off"
+        "no-use-before-define": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "prettier/prettier": ["error", {
+           "endOfLine":"auto"
+         }],
+        "@typescript-eslint/no-explicit-any": "off"
     }
 }
