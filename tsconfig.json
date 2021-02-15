@@ -1,13 +1,14 @@
 {
     "compilerOptions": {
+        "jsx": "react",
         "rootDir": "src",
         "outDir": "dist",
-        "lib": ["ES2016"],
+        "lib": ["ES2016", "DOM"],
         "module": "CommonJS",
+        "target": "ES5",
         "strict": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,
-        "noImplicitAny": true
     },
     "include": ["./src/**/*"]
 }

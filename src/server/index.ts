@@ -1,14 +1,17 @@
 import express from 'express'
 import dotenv from 'dotenv'
-import { preparation } from './models/mock-programs/preparation'
+import appRenderer from './appRenderer'
 
 dotenv.config()
 
 const app = express()
 const { PORT } = process.env
 
-app.get('/', (_, res) => {
-  res.json(preparation)
+app.use(express.static('./dist'))
+
+app.get('*', (req, res) => {
+  const content = appRenderer(req.url)
+  res.send(content)
 })
 
 app.listen(PORT, () => {
