@@ -1,11 +1,12 @@
-import Home from '../shared/Home'
-import Auth from '../shared/Auth'
-import Programs from '../shared/Programs'
+import Home from '../client/Home'
+import Auth from '../client/Auth'
+import Programs from '../client/Programs'
 import { TrainingProgram } from '../models/mock-programs/program'
 
-const baseRoutes = [
+export default [
   {
     path: '/',
+    exact: true,
     component: Home
   },
   {
@@ -13,7 +14,7 @@ const baseRoutes = [
     component: Auth
   },
   {
-    path: 'programs',
+    path: '/programs',
     component: Programs,
     load: (): Promise<TrainingProgram[]> => {
       return new Promise((resolve) => {
@@ -24,5 +25,3 @@ const baseRoutes = [
     }
   }
 ]
-
-export default baseRoutes
