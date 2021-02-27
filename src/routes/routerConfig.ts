@@ -1,7 +1,7 @@
 import Home from '../client/Home'
 import Auth from '../client/Auth'
 import Programs from '../client/Programs'
-import { TrainingProgram } from '../models/mock-programs/program'
+import { TrainingProgram } from '../db/models/mock-programs/program'
 
 export default [
   {
