@@ -35,6 +35,8 @@
     "@babel/preset-react": "^7.12.13",
     "@types/assets-webpack-plugin": "^6.1.0",
     "@types/express": "^4.17.11",
+    "@types/mongodb": "^3.6.8",
+    "@types/mongoose": "^5.10.3",
     "@types/node": "^14.14.28",
     "@types/open": "^6.2.1",
     "@types/react": "^17.0.2",
@@ -76,6 +78,8 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "mongodb": "^3.6.4",
+    "mongoose": "^5.11.18",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router": "^5.2.0",
