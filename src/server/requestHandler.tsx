@@ -16,9 +16,7 @@ export const createTemplate = (url: string) => {
             <App />
           </StaticRouter>
         )}</div>
-        <script src="${
-          process.env.NODE_ENV === 'production' ? assets.main.js : 'client.js'
-        }"></script>
+        <script src="${assets.main.js}"></script>
       </body>
     </html>
   `
