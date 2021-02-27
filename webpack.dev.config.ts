@@ -1,5 +1,6 @@
 import * as path from 'path'
 import webpack from 'webpack'
+import AssetsPlugin from 'assets-webpack-plugin'
 
 import nodeExternals from 'webpack-node-externals'
 
@@ -35,7 +36,10 @@ export const client = {
     ...commonConfig.output,
     filename: 'client.js'
   },
-  plugins: [...commonConfig.plugins]
+  plugins: [
+    ...commonConfig.plugins,
+    new AssetsPlugin({ fullPath: false, filename: 'client-assets.json' })
+  ]
 }
 export const server = {
   ...commonConfig,

@@ -2,6 +2,7 @@ import React from 'react'
 import { Request, Response } from 'express'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router'
+import assets from '../../client-assets.json'
 
 import App from '../shared/App'
 
@@ -15,12 +16,15 @@ export const createTemplate = (url: string) => {
             <App />
           </StaticRouter>
         )}</div>
-        <script src="client.js"></script>
+        <script src="${
+          process.env.NODE_ENV === 'production' ? assets.main.js : 'client.js'
+        }"></script>
       </body>
     </html>
   `
 }
 
+// used from webpack-hot-server-middleware
 export default () => {
   return (req: Request, res: Response) => {
     res.send(createTemplate(req.url))
