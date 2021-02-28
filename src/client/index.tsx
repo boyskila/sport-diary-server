@@ -1,16 +1,20 @@
 import React from 'react'
 import { hydrate } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
 
 import App from '../shared/App'
+import store from '../createStore'
 
 const root = document.querySelector('#root')
 
 const render = (Component = App) => {
   return hydrate(
-    <BrowserRouter>
-      <Component />
-    </BrowserRouter>,
+    <Provider store={store}>
+      <BrowserRouter>
+        <Component />
+      </BrowserRouter>
+    </Provider>,
     root
   )
 }

@@ -12,8 +12,11 @@ import config from '../../webpack.dev.config'
 import { isDev, PORT } from '../../env/utils'
 import { connectDb } from '../db'
 import requestHandler from './requestHandler'
+import user from '../routes/user'
 
 const app = express()
+app.use(express.json())
+app.use('auth', user)
 
 if (isDev) {
   const multiCompiler = webpack(config)
