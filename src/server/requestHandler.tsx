@@ -1,30 +1,41 @@
 import React from 'react'
-import { Request, Response } from 'express'
+import { Provider } from 'react-redux'
+import { Request, Response, Router } from 'express'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router'
+
 import assets from '../../client-assets.json'
+import store from '../createStore'
+import user from '../routes/user'
 
 import App from '../shared/App'
 
-export const createTemplate = (url: string) => {
-  return `
+export const createTemplate = (req: Request, res: Response) => {
+  const template = `
     <!DOCTYPE html>
       <head></head>
       <body>
         <div id="root">${renderToString(
-          <StaticRouter location={url}>
-            <App />
-          </StaticRouter>
+          <Provider store={store}>
+            <StaticRouter location={req.url}>
+              <App />
+            </StaticRouter>
+          </Provider>
         )}</div>
+        <script>
+          window.__PRELOADED_STATE__ = ${JSON.stringify(
+            store.getState()
+          ).replace(/</g, '\\u003c')}
+        </script>
         <script src="${assets.main.js}"></script>
       </body>
     </html>
   `
+  res.send(template)
 }
 
 // used from webpack-hot-server-middleware
 export default () => {
-  return (req: Request, res: Response) => {
-    res.send(createTemplate(req.url))
-  }
+  const router = Router()
+  return router.use('/auth', user).get('*', createTemplate)
 }
